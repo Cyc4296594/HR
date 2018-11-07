@@ -1,0 +1,90 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SMenu.master.cs" Inherits="Ui.SMenu" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap-3.3.7-dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="layui/css/layui.css" />
+    <script src="Script/jquery-3.3.1.min.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="vue-dev/dist/vue.js"></script>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="body" class="layui-col-md12" style="height: 660px">
+            <div id="menu" class="layui-col-md2" style="height: 100%; background-color: #393D49;">
+                <ul class="layui-nav layui-nav-tree layui-block" style="margin: 0px; width: 100%;" lay-filter="demo" style="margin-right: 10px;">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:void(0)">个人中心</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:void(0)">用户登录</a></dd>
+                            <dd><a href="javascript:void(0)">密码找回</a></dd>
+                            <dd><a href="javascript:void(0)">安全设置</a></dd>
+                            <dd><a href="javascript:void(0)">待办事务通知</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:void(0)">员工管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:void(0)">维护员工信息</a></dd>
+                            <dd><a href="javascript:void(0)">调阅员工信息</a></dd>
+                            <dd><a href="javascript:void(0)">汇总员工信息</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:void(0)">考勤管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:void(0)">考勤申请</a></dd>
+                            <dd><a href="javascript:void(0)">考勤审核</a></dd>
+                            <dd><a href="javascript:void(0)">考勤调阅</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:void(0)">系统管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:void(0)">角色管理</a></dd>
+                            <dd><a href="javascript:void(0)">用户管理</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div id="content" class="layui-col-md10" style="height: 100%; background-color: greenyellow;">
+                <asp:ContentPlaceHolder ID="CPH_Content" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        //导航栏部分
+        layui.use('element', function () {
+            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+            //监听导航点击
+            element.on('nav(demo)', function (elem) {
+                //console.log(elem)
+                layer.msg(elem.text());
+            });
+        });
+    </script>
+</body>
+</html>
